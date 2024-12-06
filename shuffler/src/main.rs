@@ -54,9 +54,10 @@ fn main() {
 
     let mut deck = Deck::new();
 
+    //Calling method shuffle to shuffle deck
+    deck.shuffle();
 
-    // deck.shuffle();
-
+    //Creating a dealing out of the cards. 
     let cards = deck.deal(3);
 
     println!("HEre's your cards dealt {:#?}", cards);
