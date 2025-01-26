@@ -1,75 +1,7 @@
-#[derive(Debug)]
-struct Catalog {
-    items: Vec<Media>,
-}
+mod content;
 
-impl Catalog {
-    fn new() -> Self {
-        Catalog { items: vec![] }
-    }
-
-    fn add(&mut self, media: Media) {
-        self.items.push(media);
-    }
-
-    fn get_by_index(&self, index: usize) -> Option<&Media> {
-        if self.items.len() > index {
-            //Good ! We have something to return
-            Some(&self.items[index])
-        } else {
-            // Bad! We don't have anything to return !!
-            None
-        }
-    }
-}
-
-#[derive(Debug)]
-enum Media {
-    Book { title: String, author: String },
-    Movie { title: String, director: String },
-    Audiobook { title: String },
-    Podcast(u32),
-    Placeholder,
-}
-
-impl Media {
-    fn description(&self) -> String {
-        // if let Media::Book { title, author } = self {
-        //     format!("Book: {} {}", title, author)
-        // } else if let Media::Movie { title, director } = self {
-        //     format!("Movie: {} {}", title, director)
-        // } else if let Media::Audiobook { title } = self {
-        //     format!("Audiobook: {} ", title)
-        // } else {
-        //     format!("Media Format Invalid")
-        // }
-
-        match self {
-            Media::Book { title, author } => {
-                format!("Book: {} {}", title, author)
-            }
-
-            Media::Audiobook { title } => {
-                format!("Audiobook {} ", title)
-            }
-
-            Media::Movie { title, director } => {
-                format!("Movie: {} {}", title, director)
-            }
-
-            Media::Podcast(id) => {
-                format!("Podcast {}", id)
-            }
-            Media::Placeholder => {
-                format!("Placeholder")
-            }
-        }
-    }
-}
-
-fn print_media(media: Media) {
-    println!("{:#?}", media);
-}
+use content::catalog::Catalog;
+use content::media::Media;
 
 fn main() {
     let audiobook = Media::Audiobook {
@@ -102,7 +34,7 @@ fn main() {
     catalog.add(podcast);
     catalog.add(placeholder);
 
-    let item = catalog.get_by_index(110);
+    let item = catalog.get_by_index(1);
     let placeholder = Media::Placeholder;
     println!("{:#?}", item.unwrap_or(&placeholder));
 }
