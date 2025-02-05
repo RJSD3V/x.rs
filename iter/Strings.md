@@ -98,6 +98,9 @@ over the result to access each element.
 
 Similarly, the `bytes` method returns you each raw byte, which might appropriate for your domain.
 
+```
 for b in "Зд".bytes() P{
     println!({b});
 }
+
+```
