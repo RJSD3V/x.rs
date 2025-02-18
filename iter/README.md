@@ -80,3 +80,9 @@ We rely on iterator consumers to call next() for us because: Iterators are lazy.
 
 Calling `find` on an iterator returns an Option, which is used by `map_or` to Return the 'Some' or the 'None'.
 Find calls `next` until it finds a "truthy" value and then returns an Option.
+
+
+
+### The `filter` adapter
+
+Like map, filter also takes a closure function, which returns a value only if the condition inside the closure function returns a boolean.
